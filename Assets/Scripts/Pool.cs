@@ -17,6 +17,7 @@ public class Pool : MonoBehaviour
     {
         PoolableObject o = pool[0];
         pool.RemoveAt(0);
+        o.Init();
         return o;
     }
 }
