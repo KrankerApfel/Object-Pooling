@@ -24,7 +24,7 @@ public class TAccessor<T>
         }
     }
 
-    public List<T> list = new List<T>();
+    private List<T> list = new List<T>();
 
     public List<T>GetAllModules()
     {

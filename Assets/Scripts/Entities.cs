@@ -13,9 +13,18 @@ public enum EntityType
 public class Entities : MonoBehaviour
 {
     public GameObject obj;
-    public Dictionary<EntityType, Entities> entityDict;
     public EntityType entityType;
-    //todo 
+    
+    
+    private void Awake()
+    {
+        TAccessor<Entities>.Instance.AddItem(this);
+    }
+
+    private void OnDestroy()
+    {
+        TAccessor<Entities>.Instance.RemoveItem(this);
+    }
     public bool IsActive()
     {
         return gameObject.activeInHierarchy;
@@ -29,7 +38,7 @@ public class Entities : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void Initialize(Entities prefab, int nb)
+    /*public void Initialize(Entities prefab, int nb)
     {
         entityDict = new Dictionary<EntityType, Entities>();
         for (int i = 0; i < nb; ++i)
@@ -51,5 +60,5 @@ public class Entities : MonoBehaviour
             }
         }
         return null;
-    }
+    }*/
 }
