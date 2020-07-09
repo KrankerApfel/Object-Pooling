@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ public interface IUpdater
     void SystemUpdate();
 }
 
-
+[Serializable]
 public class Updater : IUpdater
 {
     public void SystemUpdate()
@@ -15,7 +16,7 @@ public class Updater : IUpdater
         TAccessor<int> intList = TAccessor<int>.Instance;
         TAccessor<float> floatList = TAccessor<float>.Instance;
         TAccessor<int> intList2 = TAccessor<int>.Instance;
-        TAccessor<Entity> entities = TAccessor<Entity>.Instance;
+        TAccessor<Entities> entities = TAccessor<Entities>.Instance;
         TAccessor<FollowTarget> followTargets = TAccessor<FollowTarget>.Instance;
         
         //make a method in accessor to fill it in
@@ -29,6 +30,8 @@ public class Updater : IUpdater
         //function so that all ghosts follow pacman 
         foreach (var module in followTargets.GetAllModules())
         {
+            //setDestination
+            //isStopped 
             module.navMeshAgent.destination = module.playerPosition.position;
         }
     }

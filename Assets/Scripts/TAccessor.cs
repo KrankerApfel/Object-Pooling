@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class TAccessor<T>
 {
     private static TAccessor<T> _instance;
@@ -29,7 +31,6 @@ public class TAccessor<T>
         return list;
     }
     
-    //todo method to fill in the list
     
     public void AddItem(T item)
     {
@@ -40,6 +41,6 @@ public class TAccessor<T>
     {
         list.Remove(item);
     }
-    
+
     
 }
