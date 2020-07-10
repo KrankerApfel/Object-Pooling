@@ -22,6 +22,8 @@ public class Updater : IUpdater
     private PacmanList _ghostTarget;
     private bool _isEndGame;
     private EdibleList _pacmanTarget;
+
+    private GhostList _fleeTarget;
     // bool _isSearchingTarget;
     #region Singleton
 
@@ -69,7 +71,17 @@ public class Updater : IUpdater
         foreach (var module in _targetEdible.GetAllModules())
         {
             _pacmanTarget = module.GuessTheBestEntityToTarget();
-            if (_pacmanTarget != null)
+            float distance = module.GetDistanceToClosestGhost();
+            Debug.Log("distance is : " + distance);
+            if (distance < 5f)
+            {
+                _fleeTarget = module.GuessBestGhostToFlee();
+                Vector3 dirToPlayer = module.transform.position - _fleeTarget.transform.position;
+                Vector3 newPos = _fleeTarget.transform.position + dirToPlayer;
+                Debug.Log("pos is :"+newPos);
+                module.navMeshAgent.SetDestination(newPos);
+            }
+            else if (_pacmanTarget != null)
             {
                 module.navMeshAgent.SetDestination(_pacmanTarget.transform.position);
             }
