@@ -105,15 +105,6 @@ public class Updater : IUpdater
         }
         
         
-        
-        foreach (var module in _ghosts.GetAllModules())
-        {
-            module.navMeshAgent.speed = ghostSpeed;
-        }
-        
-        foreach (var module in _pacmans.GetAllModules())
-        {
-            module.navMeshAgent.speed = pacSpeed;
-        }
+     
     }
 }
