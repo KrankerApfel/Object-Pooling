@@ -68,19 +68,7 @@ public class Updater : IUpdater
 
     public void SystemUpdate()
     {
-        //checks if game is finisehd 
-        if (_pacmans.GetAllModules().Count == 0 && !_gameEnded)
-        {
-            _gameEnded = true;
-            Time.timeScale = 0f;
-            EndGame.instance.GameEnd(false);
-        }
-        else if (_edibles.GetAllModules().Count == 0 && !_gameEnded)
-        {
-            _gameEnded = true;
-            Time.timeScale = 0f;
-            EndGame.instance.GameEnd(true);
-        }
+     
 
 
         

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private FollowTargetUpdater _followTargetUpdater;
     private TargetEdibleUpdater _targetEdible;
     public PacmanScoreUpdater _pacmanScoreUpdater;
+    public GameEndUpdater _gameEndUpdater;
 
     private void Awake()
     {
@@ -28,6 +29,10 @@ public class GameManager : MonoBehaviour
         
         _pacmanScoreUpdater = new PacmanScoreUpdater();
         _pacmanScoreUpdater.InitAccessors();
+        
+        
+        _gameEndUpdater = new GameEndUpdater();
+        _gameEndUpdater.InitAccessors();
     }
 
     // Update is called once per frame
@@ -37,5 +42,6 @@ public class GameManager : MonoBehaviour
        _followTargetUpdater.SystemUpdate();
        _targetEdible.SystemUpdate();
        _pacmanScoreUpdater.SystemUpdate();
+       _gameEndUpdater.SystemUpdate();
     }
 }
