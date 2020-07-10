@@ -17,6 +17,7 @@ public class EatEdibleScript : MonoBehaviour
         TAccessor<EatEdibleScript>.Instance.RemoveItem(this);
     }
     
+    //if colliding object is an edible, increase score and eat the edible, if it was a powerup increase speed up 
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.CompareTag("Edible"))

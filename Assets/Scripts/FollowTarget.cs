@@ -19,6 +19,7 @@ public class FollowTarget : MonoBehaviour
     }
 
     
+    //find closest pacman to chase
     public PacmanList GuessTheBestEntityToTarget()
     {
         PacmanList bestTarget = null;

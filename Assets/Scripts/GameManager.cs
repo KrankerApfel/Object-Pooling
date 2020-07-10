@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//gameobject that has the gamemanager
 public class GameManager : MonoBehaviour
 {
     private Updater _updater;

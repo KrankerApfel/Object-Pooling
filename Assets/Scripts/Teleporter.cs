@@ -9,6 +9,7 @@ public class Teleporter : MonoBehaviour
 {
       private Vector3 _randomPosition;
       
+      
       private void Awake()
       {
             _randomPosition = new Vector3(Random.Range(2,13),0,Random.Range(2,13));
@@ -19,6 +20,8 @@ public class Teleporter : MonoBehaviour
       {
             TAccessor<Teleporter>.Instance.RemoveItem(this);
       }
+      
+      //when character enters teleporter, sends to a random location set at the beginning of the scene
 
       public void OnTriggerEnter(Collider other)
       {

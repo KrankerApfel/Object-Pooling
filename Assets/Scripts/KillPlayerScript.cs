@@ -16,6 +16,7 @@ public class KillPlayerScript : MonoBehaviour
         TAccessor<KillPlayerScript>.Instance.RemoveItem(this);
     }
 
+    //if ghost collides with pacman, kill it
     private void OnCollisionEnter(Collision other)
     {
       

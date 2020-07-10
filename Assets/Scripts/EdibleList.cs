@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//reference to list of all edibles to easily have access to
 public class EdibleList : MonoBehaviour
 {
 

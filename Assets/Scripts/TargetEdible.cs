@@ -18,6 +18,7 @@ public class TargetEdible : MonoBehaviour
         TAccessor<TargetEdible>.Instance.RemoveItem(this);
     }
 
+    //find distance to the closest ghost to know if pacman has to run
     public float GetDistanceToClosestGhost()
     {
 
@@ -38,6 +39,7 @@ public class TargetEdible : MonoBehaviour
         return bestDistance;
     }
     
+    //If the ghost is close, get that ghost to flee 
     public GhostList GuessBestGhostToFlee()
     {
         GhostList bestTarget = null;
@@ -59,6 +61,8 @@ public class TargetEdible : MonoBehaviour
 
         return bestTarget;
     }
+    
+    //if a ghost isn't close, find the closest edible to eat
     public EdibleList GuessTheBestEntityToTarget()
     {
         EdibleList bestTarget = null;

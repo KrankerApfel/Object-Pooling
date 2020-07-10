@@ -3,22 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//interface for updater
 public interface IUpdater
 {
     void SystemUpdate();
     void InitAccessors();
 }
-
+//updater which handles every update of every mondule
 [Serializable]
 public class Updater : IUpdater
 {
-    private TAccessor<Entities> _entities;
     private TAccessor<FollowTarget> _followTargets;
 
     private TAccessor<TargetEdible> _targetEdible;
 
     private TAccessor<GhostScore> _ghostScore;
-    //private float _timeLeft;
     private PacmanList _ghostTarget;
     private bool _isEndGame;
     private EdibleList _pacmanTarget;
@@ -29,9 +28,8 @@ public class Updater : IUpdater
     private TAccessor<PacmanList> _pacmans;
 
     private TAccessor<EdibleList> _edibles;
-    // bool _isSearchingTarget;
     #region Singleton
-
+    
     private static Updater _instance;
         
     public static Updater Instance {
@@ -51,9 +49,9 @@ public class Updater : IUpdater
 
     #endregion
 
+    //get all instances at init to have all references
     public void InitAccessors()
     {
-        _entities = TAccessor<Entities>.Instance;
         _followTargets = TAccessor<FollowTarget>.Instance;
         _targetEdible = TAccessor<TargetEdible>.Instance;
         _ghostScore = TAccessor<GhostScore>.Instance;
@@ -63,6 +61,7 @@ public class Updater : IUpdater
 
     public void SystemUpdate()
     {
+        //checks if game is finisehd 
         if (_pacmans.GetAllModules().Count == 0 && !_gameEnded)
         {
             _gameEnded = true;
@@ -76,10 +75,12 @@ public class Updater : IUpdater
             EndGame.instance.GameEnd(true);
         }
 
+        //pacmans behavior
         foreach (var module in _targetEdible.GetAllModules())
         {
             _pacmanTarget = module.GuessTheBestEntityToTarget();
             float distance = module.GetDistanceToClosestGhost();
+            //if a ghost is nearby, try to flee
             if (distance < 7f)
             {
                 _fleeTarget = module.GuessBestGhostToFlee();
@@ -89,33 +90,21 @@ public class Updater : IUpdater
 
                 module.navMeshAgent.SetDestination(newPos);
             }
+            //if no ghosts are nearby, eat edibles
             else if (_pacmanTarget != null)
             {
                 module.navMeshAgent.SetDestination(_pacmanTarget.transform.position);
             }
-            else
-            {
-                Time.timeScale = 0f;
-                EndGame.instance.GameEnd(true);
-            }
         }
         
-        //function so that all ghosts follow pacman 
+        //chase closest ghost
         foreach (var module in _followTargets.GetAllModules()){
             _ghostTarget = module.GuessTheBestEntityToTarget();
             if (_ghostTarget != null)
             {
                 module.navMeshAgent.SetDestination(_ghostTarget.transform.position);
             }
-            else
-            {
-                    Time.timeScale = 0f;
-                    EndGame.instance.GameEnd(false);
-            }
                 
         }
-        
-
-
     }
 }
