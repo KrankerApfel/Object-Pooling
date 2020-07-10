@@ -41,5 +41,11 @@ public class TAccessor<T>
         list.Remove(item);
     }
 
+    public bool CheckContainItem(T searchedItem)
+    {
+        return list.Contains(searchedItem);
+    }
+
+
     
 }
