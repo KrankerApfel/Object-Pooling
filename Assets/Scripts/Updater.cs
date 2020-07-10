@@ -75,8 +75,9 @@ public class Updater : IUpdater
             if (distance < 7f)
             {
                 _fleeTarget = module.GuessBestGhostToFlee();
-                Vector3 dirToPlayer = module.transform.position - _fleeTarget.transform.position;
-                Vector3 newPos = module.transform.position + dirToPlayer;
+                Vector3 pacmanPos = module.transform.position;
+                Vector3 dirToPlayer = pacmanPos - _fleeTarget.transform.position;
+                Vector3 newPos = pacmanPos + dirToPlayer;
 
                 module.navMeshAgent.SetDestination(newPos);
             }
