@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EatEdibleScript : MonoBehaviour
 {
@@ -20,6 +22,11 @@ public class EatEdibleScript : MonoBehaviour
         if (other.collider.CompareTag("Edible"))
         {
             GetComponent<PacmanScore>().Score++;
+            try
+            {
+               GetComponent<NavMeshAgent>().speed +=  other.gameObject.GetComponent<SpeedPowerUp>().speedBonus;
+            }
+            catch(MissingComponentException e){}
             Destroy(other.gameObject);
         }
     }
