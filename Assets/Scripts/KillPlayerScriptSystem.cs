@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class KillPlayerScriptSystem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //if ghost collides with pacman, kill it
+    private void OnCollisionEnter(Collision other)
     {
-        
-    }
+      
+        if (other.collider.CompareTag("Pacman"))
+        {
+            GetComponent<GhostScore>().Score+=5;
+            Destroy(other.gameObject);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

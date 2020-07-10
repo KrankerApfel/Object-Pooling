@@ -16,15 +16,5 @@ public class KillPlayerScript : MonoBehaviour
         TAccessor<KillPlayerScript>.Instance.RemoveItem(this);
     }
 
-    //if ghost collides with pacman, kill it
-    private void OnCollisionEnter(Collision other)
-    {
-      
-        if (other.collider.CompareTag("Pacman"))
-        {
-            GetComponent<GhostScore>().Score+=5;
-            Destroy(other.gameObject);
-        }
 
-    }
 }
