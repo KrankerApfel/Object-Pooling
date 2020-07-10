@@ -5,6 +5,8 @@ using UnityEngine;
 //easy reference to all pacmans in scene
 public class PacmanList : MonoBehaviour
 {
+    public UnityEngine.AI.NavMeshAgent navMeshAgent;
+
     private void Awake()
     {
         TAccessor<PacmanList>.Instance.AddItem(this);
