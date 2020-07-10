@@ -582,6 +582,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Pocman '
       objectReference: {fileID: 0}
+    - target: {fileID: 2382465914764005184, guid: 5cf831ee6b5d40249900757fee0fa05e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5384556246503518086, guid: 5cf831ee6b5d40249900757fee0fa05e,
         type: 3}
       propertyPath: text
@@ -1794,6 +1799,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pecman
       objectReference: {fileID: 0}
+    - target: {fileID: 2382465914764005184, guid: 5cf831ee6b5d40249900757fee0fa05e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5384556246503518086, guid: 5cf831ee6b5d40249900757fee0fa05e,
         type: 3}
       propertyPath: text
@@ -2164,7 +2174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c784da9dd6cbd5649a4e6b71429c531b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedBonus: 7
+  speedBonus: 50
 --- !u!4 &681120745 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1911686731667004824, guid: 8cce6cf1550c5a241ae4a02b9fecff04,
@@ -3003,7 +3013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c784da9dd6cbd5649a4e6b71429c531b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedBonus: 7
+  speedBonus: 50
 --- !u!1 &1171763145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,7 +3592,7 @@ PrefabInstance:
     - target: {fileID: 9105731866912546829, guid: 76e6531851988c24db2d696794d70cb9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76e6531851988c24db2d696794d70cb9, type: 3}
@@ -5389,6 +5399,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Picman
       objectReference: {fileID: 0}
+    - target: {fileID: 2382465914764005184, guid: 5cf831ee6b5d40249900757fee0fa05e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5384556246503518086, guid: 5cf831ee6b5d40249900757fee0fa05e,
         type: 3}
       propertyPath: text
@@ -6172,7 +6187,7 @@ PrefabInstance:
     - target: {fileID: 9105731866912546829, guid: 76e6531851988c24db2d696794d70cb9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76e6531851988c24db2d696794d70cb9, type: 3}
@@ -6217,6 +6232,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 817422831}
     m_Modifications:
+    - target: {fileID: -9210636393741398860, guid: 5cf831ee6b5d40249900757fee0fa05e,
+        type: 3}
+      propertyPath: m_Acceleration
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 2382465914764005184, guid: 5cf831ee6b5d40249900757fee0fa05e,
         type: 3}
       propertyPath: m_Name
