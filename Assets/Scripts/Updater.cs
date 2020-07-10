@@ -82,28 +82,7 @@ public class Updater : IUpdater
             EndGame.instance.GameEnd(true);
         }
 
-        //pacmans behavior
-        foreach (var module in _targetEdible.GetAllModules())
-        {
-            _pacmanTarget = module.GuessTheBestEntityToTarget();
-            float distance = module.GetDistanceToClosestGhost();
-            //if a ghost is nearby, try to flee
-            if (distance < 6f)
-            {
-                _fleeTarget = module.GuessBestGhostToFlee();
-                Vector3 pacmanPos = module.transform.position;
-                Vector3 dirToPlayer = pacmanPos - _fleeTarget.transform.position;
-                Vector3 newPos = pacmanPos + dirToPlayer;
 
-                module.navMeshAgent.SetDestination(newPos);
-            }
-            //if no ghosts are nearby, eat edibles
-            else if (_pacmanTarget != null)
-            {
-                module.navMeshAgent.SetDestination(_pacmanTarget.transform.position);
-            }
-        }
-        
         
         
         foreach (var module in _ghosts.GetAllModules())

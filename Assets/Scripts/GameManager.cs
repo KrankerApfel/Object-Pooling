@@ -9,7 +9,8 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public Updater _updater;
-    public FollowTargetUpdater _FollowTargetUpdater;
+    private FollowTargetUpdater _followTargetUpdater;
+    private TargetEdibleUpdater _targetEdible;
 
     private void Awake()
     {
@@ -17,8 +18,11 @@ public class GameManager : MonoBehaviour
         _updater = Updater.Instance;
         _updater.InitAccessors();
         
-        _FollowTargetUpdater = new FollowTargetUpdater();
-        _FollowTargetUpdater.InitAccessors();
+        _followTargetUpdater = new FollowTargetUpdater();
+        _followTargetUpdater.InitAccessors();
+        
+        _targetEdible = new TargetEdibleUpdater();
+        _targetEdible.InitAccessors();
 
     }
 
@@ -26,6 +30,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
        _updater.SystemUpdate(); 
-       _FollowTargetUpdater.SystemUpdate();
+       _followTargetUpdater.SystemUpdate();
+       _targetEdible.SystemUpdate();
     }
 }
