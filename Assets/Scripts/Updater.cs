@@ -57,6 +57,7 @@ public class Updater : IUpdater
         _ghostScore = TAccessor<GhostScore>.Instance;
         _pacmans = TAccessor<PacmanList>.Instance;
         _edibles = TAccessor<EdibleList>.Instance;
+        _gameEnded = false;
     }
 
     public void SystemUpdate()
@@ -81,7 +82,7 @@ public class Updater : IUpdater
             _pacmanTarget = module.GuessTheBestEntityToTarget();
             float distance = module.GetDistanceToClosestGhost();
             //if a ghost is nearby, try to flee
-            if (distance < 7f)
+            if (distance < 6f)
             {
                 _fleeTarget = module.GuessBestGhostToFlee();
                 Vector3 pacmanPos = module.transform.position;

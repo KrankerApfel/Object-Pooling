@@ -12,7 +12,6 @@ public class Teleporter : MonoBehaviour
       
       private void Awake()
       {
-            _randomPosition = new Vector3(Random.Range(2,13),0,Random.Range(2,13));
             TAccessor<Teleporter>.Instance.AddItem(this);
       }
 
@@ -25,6 +24,7 @@ public class Teleporter : MonoBehaviour
 
       public void OnTriggerEnter(Collider other)
       {
+            _randomPosition = new Vector3(Random.Range(2,13),0,Random.Range(2,13));
             other.transform.position = _randomPosition;
       }
 }
