@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Updater _updater;
     public FollowTargetUpdater _FollowTargetUpdater;
     public GhostScoreUpdater _GhostScoreUpdater;
+    public PacmanScoreUpdater _PacmanScoreUpdater;
 
     private void Awake()
     {
@@ -20,10 +21,12 @@ public class GameManager : MonoBehaviour
         
         _FollowTargetUpdater = new FollowTargetUpdater();
         _FollowTargetUpdater.InitAccessors();
-
         
         _GhostScoreUpdater = new GhostScoreUpdater();
         _GhostScoreUpdater.InitAccessors();
+        
+        _PacmanScoreUpdater = new PacmanScoreUpdater();
+        _PacmanScoreUpdater.InitAccessors();
 
     }
 
@@ -33,5 +36,6 @@ public class GameManager : MonoBehaviour
        _updater.SystemUpdate(); 
        _FollowTargetUpdater.SystemUpdate();
        _GhostScoreUpdater.SystemUpdate();
+       _PacmanScoreUpdater.SystemUpdate();
     }
 }
