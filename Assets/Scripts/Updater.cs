@@ -24,6 +24,7 @@ public class Updater : IUpdater
     private EdibleList _pacmanTarget;
 
     private GhostList _fleeTarget;
+    private bool _gameEnded;
 
     private TAccessor<PacmanList> _pacmans;
 
@@ -62,27 +63,17 @@ public class Updater : IUpdater
 
     public void SystemUpdate()
     {
-        Debug.Log("updating");
-        if (_pacmans.GetAllModules().Count == 0)
+        if (_pacmans.GetAllModules().Count == 0 && !_gameEnded)
         {
+            _gameEnded = true;
             Time.timeScale = 0f;
             EndGame.instance.GameEnd(false);
         }
-        else if (_edibles.GetAllModules().Count == 0)
+        else if (_edibles.GetAllModules().Count == 0 && !_gameEnded)
         {
+            _gameEnded = true;
             Time.timeScale = 0f;
             EndGame.instance.GameEnd(true);
-        }
-        /*_timeLeft -= Time.deltaTime;
-        if (_target == null || _timeLeft <= 0)
-        {
-            _isSearchingTarget = true;
-            _timeLeft = 1f;
-        }*/
-        foreach (var module in _entities.GetAllModules())
-        {
-            GameObject entity = module.obj.gameObject;
-            //GameObject entity = module.Value.Gameobject; 
         }
 
         foreach (var module in _targetEdible.GetAllModules())

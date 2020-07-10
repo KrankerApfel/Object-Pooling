@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
         _updater = Updater.Instance;
         _updater.InitAccessors();
     }
