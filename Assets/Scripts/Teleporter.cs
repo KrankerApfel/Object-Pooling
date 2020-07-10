@@ -7,11 +7,11 @@ using Random = UnityEngine.Random;
 
 public class Teleporter : MonoBehaviour
 {
-      public Vector3 randomPosition;
+      private Vector3 _randomPosition;
       
       private void Awake()
       {
-            randomPosition = new Vector3(Random.Range(2,13),0,Random.Range(2,13));
+            _randomPosition = new Vector3(Random.Range(2,13),0,Random.Range(2,13));
             TAccessor<Teleporter>.Instance.AddItem(this);
       }
 
@@ -22,6 +22,6 @@ public class Teleporter : MonoBehaviour
 
       public void OnTriggerEnter(Collider other)
       {
-            other.transform.position = randomPosition;
+            other.transform.position = _randomPosition;
       }
 }

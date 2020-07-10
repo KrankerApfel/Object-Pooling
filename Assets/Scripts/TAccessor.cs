@@ -16,10 +16,7 @@ public class TAccessor<T>
                 _instance = new TAccessor<T>();
                 Debug.Log("created accesor of type : " + typeof(T));
             }
-            else
-            {
-                Debug.Log("Instance already exists");
-            }
+
             return _instance;
         }
     }

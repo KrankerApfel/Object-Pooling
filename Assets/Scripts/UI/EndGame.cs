@@ -29,10 +29,8 @@ public class EndGame : MonoBehaviour
     #endregion
 
     public void OnRetry()
-    {
-        Time.timeScale = 1f;
+    {        
         SceneManager.LoadScene(0);
-        Time.timeScale = 1f;
 
     }
 
