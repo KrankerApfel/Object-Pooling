@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 61886967416989365}
   - component: {fileID: 51780165863148457}
   - component: {fileID: 8508540905414329446}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}

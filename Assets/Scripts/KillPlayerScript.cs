@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class KillPlayerScript : MonoBehaviour
 {
+    private TAccessor<GhostScore> _ghostScore;
     private void Awake()
     {
         TAccessor<KillPlayerScript>.Instance.AddItem(this);
@@ -17,6 +18,10 @@ public class KillPlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (_ghostScore == null)
+        {
+            _ghostScore = TAccessor<GhostScore>.Instance;
+        }
         if (other.collider.CompareTag("Pacman"))
         {
             Destroy(other.gameObject);

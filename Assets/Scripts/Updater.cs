@@ -16,6 +16,8 @@ public class Updater : IUpdater
     private TAccessor<FollowTarget> _followTargets;
 
     private TAccessor<TargetEdible> _targetEdible;
+
+    private TAccessor<GhostScore> _ghostScore;
     //private float _timeLeft;
     private PacmanList _ghostTarget;
     private bool _isEndGame;
@@ -47,7 +49,7 @@ public class Updater : IUpdater
         _entities = TAccessor<Entities>.Instance;
         _followTargets = TAccessor<FollowTarget>.Instance;
         _targetEdible = TAccessor<TargetEdible>.Instance;
-        
+        _ghostScore = TAccessor<GhostScore>.Instance;
     }
 
     public void SystemUpdate()
@@ -93,6 +95,7 @@ public class Updater : IUpdater
             }
                 
         }
+
 
     }
 }

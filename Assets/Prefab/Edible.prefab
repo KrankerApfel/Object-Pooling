@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8134910184000873885}
   - component: {fileID: 4116114469553023154}
   - component: {fileID: 6948571172936446894}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Edible
   m_TagString: Edible
   m_Icon: {fileID: 0}
