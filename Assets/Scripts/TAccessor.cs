@@ -14,7 +14,7 @@ public class TAccessor<T>
             if (_instance == null)
             {
                 _instance = new TAccessor<T>();
-                Debug.Log("created accesor of type : " + typeof(T));
+              //  Debug.Log("created accesor of type : " + typeof(T));
             }
 
             return _instance;
