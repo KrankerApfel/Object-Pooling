@@ -72,13 +72,12 @@ public class Updater : IUpdater
         {
             _pacmanTarget = module.GuessTheBestEntityToTarget();
             float distance = module.GetDistanceToClosestGhost();
-            Debug.Log("distance is : " + distance);
-            if (distance < 5f)
+            if (distance < 7f)
             {
                 _fleeTarget = module.GuessBestGhostToFlee();
                 Vector3 dirToPlayer = module.transform.position - _fleeTarget.transform.position;
-                Vector3 newPos = _fleeTarget.transform.position + dirToPlayer;
-                Debug.Log("pos is :"+newPos);
+                Vector3 newPos = module.transform.position + dirToPlayer;
+
                 module.navMeshAgent.SetDestination(newPos);
             }
             else if (_pacmanTarget != null)
@@ -87,7 +86,6 @@ public class Updater : IUpdater
             }
             else
             {
-                Debug.Log("hi");
                 Time.timeScale = 0f;
                 EndGame.instance.GameEnd(true);
             }
