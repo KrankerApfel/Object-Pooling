@@ -22,7 +22,7 @@ public class KillPlayerScript : MonoBehaviour
       
         if (other.collider.CompareTag("Pacman"))
         {
-            GetComponent<GhostScore>().Score+=10;
+            GetComponent<GhostScore>().Score+=5;
             Destroy(other.gameObject);
         }
 
