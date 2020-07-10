@@ -5,13 +5,27 @@ using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-   private static PoolManager _singleton;
+   static private PoolManager _singleton;
    public static PoolManager Instance(){return _singleton;}
 
    private Dictionary<ObjectType, Pool> poolDict;
    public List<ObjectForPool> data;
 
-   private void Awake(){_singleton = this;}
+   private void Awake()
+   {
+      _singleton = this;
+   }
+
+   public void Initialize()
+   {
+      poolDict = new Dictionary<ObjectType, Pool>();
+      foreach (ObjectForPool obj in data)
+      {
+         Pool pool = new Pool();
+         pool.Initialize(obj.Prefab, obj.Number);
+         poolDict.Add(obj.ObjectType, pool);
+      }
+   }
 
    private void Start()
    {
@@ -25,12 +39,12 @@ public class PoolManager : MonoBehaviour
 
    public PoolableObject GetPooledObject(ObjectType t)
    {
-      return poolDict[t].getObject();
+      return poolDict[t].PullObject();
    }
    
    public void ReleasePooledObject(PoolableObject o)
    {
-      ObjectForPool d = data.First(x => x.Prefab == o);
-      poolDict[d.ObjectType].pool.Add(o);
+      o.DeInit();
+      
    }
 }
