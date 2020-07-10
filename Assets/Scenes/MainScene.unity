@@ -1661,6 +1661,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 817422831}
     m_Modifications:
+    - target: {fileID: 61886967416989365, guid: 76e6531851988c24db2d696794d70cb9,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 415179611}
     - target: {fileID: 4039833464727383478, guid: 76e6531851988c24db2d696794d70cb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1734,7 +1739,7 @@ PrefabInstance:
     - target: {fileID: 9105731866912546829, guid: 76e6531851988c24db2d696794d70cb9,
         type: 3}
       propertyPath: m_Name
-      value: Ghost (2)
+      value: Toc-Toc
       objectReference: {fileID: 0}
     - target: {fileID: 9105731866912546829, guid: 76e6531851988c24db2d696794d70cb9,
         type: 3}
@@ -3416,6 +3421,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 817422831}
     m_Modifications:
+    - target: {fileID: 61886967416989365, guid: 76e6531851988c24db2d696794d70cb9,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 492970956}
     - target: {fileID: 4039833464727383478, guid: 76e6531851988c24db2d696794d70cb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3489,7 +3499,7 @@ PrefabInstance:
     - target: {fileID: 9105731866912546829, guid: 76e6531851988c24db2d696794d70cb9,
         type: 3}
       propertyPath: m_Name
-      value: Ghost (1)
+      value: Slimer
       objectReference: {fileID: 0}
     - target: {fileID: 9105731866912546829, guid: 76e6531851988c24db2d696794d70cb9,
         type: 3}
@@ -5787,6 +5797,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 817422831}
     m_Modifications:
+    - target: {fileID: 61886967416989365, guid: 76e6531851988c24db2d696794d70cb9,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 1921768367}
     - target: {fileID: 4039833464727383478, guid: 76e6531851988c24db2d696794d70cb9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5860,7 +5875,7 @@ PrefabInstance:
     - target: {fileID: 9105731866912546829, guid: 76e6531851988c24db2d696794d70cb9,
         type: 3}
       propertyPath: m_Name
-      value: Ghost
+      value: Casper
       objectReference: {fileID: 0}
     - target: {fileID: 9105731866912546829, guid: 76e6531851988c24db2d696794d70cb9,
         type: 3}
