@@ -19,8 +19,7 @@ public class EatEdibleScript : MonoBehaviour
     {
         if (other.collider.CompareTag("Edible"))
         {
-            GetComponent<PacmanScore>().score++;
-            Debug.Log(GetComponent<PacmanScore>().score);
+            GetComponent<PacmanScore>().Score++;
             Destroy(other.gameObject);
         }
     }
