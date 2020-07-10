@@ -30,9 +30,10 @@ public class EndGame : MonoBehaviour
 
     #endregion
 
+    //retry level when retry button is pressed
     public void OnRetry()
-    {        
-        SceneManager.LoadScene(0);
+    {       
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     }
 
