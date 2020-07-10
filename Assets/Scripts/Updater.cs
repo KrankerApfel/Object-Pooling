@@ -13,6 +13,10 @@ public interface IUpdater
 [Serializable]
 public class Updater : IUpdater
 {
+    public float ghostSpeed = 1.0f;
+    public float pacSpeed = 6.0f;
+    private TAccessor<GhostList> _ghosts; 
+
     private TAccessor<FollowTarget> _followTargets;
 
     private TAccessor<TargetEdible> _targetEdible;
@@ -56,6 +60,7 @@ public class Updater : IUpdater
         _targetEdible = TAccessor<TargetEdible>.Instance;
         _ghostScore = TAccessor<GhostScore>.Instance;
         _pacmans = TAccessor<PacmanList>.Instance;
+        _ghosts = TAccessor<GhostList>.Instance;
         _edibles = TAccessor<EdibleList>.Instance;
     }
 
@@ -105,6 +110,16 @@ public class Updater : IUpdater
                 module.navMeshAgent.SetDestination(_ghostTarget.transform.position);
             }
                 
+        }
+        
+        foreach (var module in _ghosts.GetAllModules())
+        {
+            module.navMeshAgent.speed = ghostSpeed;
+        }
+        
+        foreach (var module in _pacmans.GetAllModules())
+        {
+            module.navMeshAgent.speed = pacSpeed;
         }
     }
 }
