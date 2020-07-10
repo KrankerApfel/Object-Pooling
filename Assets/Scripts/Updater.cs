@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 //interface for updater
 public interface IUpdater
 {
@@ -103,15 +104,7 @@ public class Updater : IUpdater
             }
         }
         
-        //chase closest ghost
-        foreach (var module in _followTargets.GetAllModules()){
-            _ghostTarget = module.GuessTheBestEntityToTarget();
-            if (_ghostTarget != null)
-            {
-                module.navMeshAgent.SetDestination(_ghostTarget.transform.position);
-            }
-                
-        }
+        
         
         foreach (var module in _ghosts.GetAllModules())
         {
