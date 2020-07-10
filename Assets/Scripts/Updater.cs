@@ -24,6 +24,10 @@ public class Updater : IUpdater
     private EdibleList _pacmanTarget;
 
     private GhostList _fleeTarget;
+
+    private TAccessor<PacmanList> _pacmans;
+
+    private TAccessor<EdibleList> _edibles;
     // bool _isSearchingTarget;
     #region Singleton
 
@@ -52,10 +56,23 @@ public class Updater : IUpdater
         _followTargets = TAccessor<FollowTarget>.Instance;
         _targetEdible = TAccessor<TargetEdible>.Instance;
         _ghostScore = TAccessor<GhostScore>.Instance;
+        _pacmans = TAccessor<PacmanList>.Instance;
+        _edibles = TAccessor<EdibleList>.Instance;
     }
 
     public void SystemUpdate()
     {
+        Debug.Log("updating");
+        if (_pacmans.GetAllModules().Count == 0)
+        {
+            Time.timeScale = 0f;
+            EndGame.instance.GameEnd(false);
+        }
+        else if (_edibles.GetAllModules().Count == 0)
+        {
+            Time.timeScale = 0f;
+            EndGame.instance.GameEnd(true);
+        }
         /*_timeLeft -= Time.deltaTime;
         if (_target == null || _timeLeft <= 0)
         {
@@ -106,6 +123,7 @@ public class Updater : IUpdater
             }
                 
         }
+        
 
 
     }

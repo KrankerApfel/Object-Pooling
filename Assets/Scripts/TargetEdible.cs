@@ -21,12 +21,10 @@ public class TargetEdible : MonoBehaviour
     public float GetDistanceToClosestGhost()
     {
 
-        GhostList bestTarget = null;
         float bestDistance = float.PositiveInfinity;
         if (_ghosts == null)
-        {
             _ghosts = TAccessor<GhostList>.Instance.GetAllModules();
-        }
+        
 
         foreach (var ghost in _ghosts)
         {
@@ -34,7 +32,6 @@ public class TargetEdible : MonoBehaviour
             if (distance < bestDistance)
             {
                 bestDistance = distance;
-                bestTarget = ghost;
             }
         }
 
@@ -72,7 +69,6 @@ public class TargetEdible : MonoBehaviour
         }
         foreach (var edible in _edibles)
         {
-            //Debug.Log("position :" + pacman.transform.position);
             float distance = Vector3.Distance(this.gameObject.transform.position, edible.transform.position);
             if (distance < bestDistance)
             {
