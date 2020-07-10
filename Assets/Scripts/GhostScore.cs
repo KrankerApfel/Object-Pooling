@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostScore : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+{    
+    private void Awake()
     {
-        
+        TAccessor<GhostScore>.Instance.AddItem(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        TAccessor<GhostScore>.Instance.RemoveItem(this);
     }
+
 }
