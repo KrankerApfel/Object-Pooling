@@ -14,7 +14,7 @@ public class FollowTargetUpdater : IUpdater
         //chase closest ghost
         foreach (var module in _followTargets.GetAllModules())
         {
-            PacmanList _ghostTarget=GuessTheBestEntityToTarget(module.gameObject);
+            PacmanList _ghostTarget = GuessTheBestEntityToTarget(module.gameObject);
             if (_ghostTarget != null)
             {
                 module.navMeshAgent.SetDestination(_ghostTarget.transform.position);

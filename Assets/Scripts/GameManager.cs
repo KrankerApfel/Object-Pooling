@@ -9,9 +9,14 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public Updater _updater;
+<<<<<<< HEAD
+    private FollowTargetUpdater _followTargetUpdater;
+    private TargetEdibleUpdater _targetEdible;
+=======
     public FollowTargetUpdater _FollowTargetUpdater;
     public GhostScoreUpdater _GhostScoreUpdater;
     public PacmanScoreUpdater _PacmanScoreUpdater;
+>>>>>>> 0076f623c9cb4b9f8ba6c9b885bd475244559ba5
 
     private void Awake()
     {
@@ -19,6 +24,13 @@ public class GameManager : MonoBehaviour
         _updater = Updater.Instance;
         _updater.InitAccessors();
         
+<<<<<<< HEAD
+        _followTargetUpdater = new FollowTargetUpdater();
+        _followTargetUpdater.InitAccessors();
+        
+        _targetEdible = new TargetEdibleUpdater();
+        _targetEdible.InitAccessors();
+=======
         _FollowTargetUpdater = new FollowTargetUpdater();
         _FollowTargetUpdater.InitAccessors();
         
@@ -27,6 +39,7 @@ public class GameManager : MonoBehaviour
         
         _PacmanScoreUpdater = new PacmanScoreUpdater();
         _PacmanScoreUpdater.InitAccessors();
+>>>>>>> 0076f623c9cb4b9f8ba6c9b885bd475244559ba5
 
     }
 
@@ -34,8 +47,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
        _updater.SystemUpdate(); 
+<<<<<<< HEAD
+       _followTargetUpdater.SystemUpdate();
+       _targetEdible.SystemUpdate();
+=======
        _FollowTargetUpdater.SystemUpdate();
        _GhostScoreUpdater.SystemUpdate();
        _PacmanScoreUpdater.SystemUpdate();
+>>>>>>> 0076f623c9cb4b9f8ba6c9b885bd475244559ba5
     }
 }
