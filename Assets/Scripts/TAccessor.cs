@@ -45,6 +45,11 @@ public class TAccessor<T>
     {
         return list.Contains(searchedItem);
     }
+    
+    public T GetModuleByRef(T reference)
+    {
+        return list.Find(x => x.Equals(reference));
+    }
 
 
     

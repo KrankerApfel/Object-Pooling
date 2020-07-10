@@ -7,9 +7,12 @@ public class KillPlayerScriptSystem : MonoBehaviour
     //if ghost collides with pacman, kill it
     private void OnCollisionEnter(Collision other)
     {
-        if (!other.collider.CompareTag("Pacman")) return;
-        GetComponent<GhostScore>().Score+=5;
-        Destroy(other.gameObject);
+        
+        if (TAccessor<GhostScore>.Instance.GetModuleByRef(other.gameObject) != null)
+        {
+            GetComponent<GhostScore>().Score+=5;
+            Destroy(other.gameObject);
+        }
 
     }
 }
