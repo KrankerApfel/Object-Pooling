@@ -26,7 +26,7 @@ public class EatEdibleScript : MonoBehaviour
             {
                GetComponent<NavMeshAgent>().speed +=  other.gameObject.GetComponent<SpeedPowerUp>().speedBonus;
             }
-            catch(MissingComponentException e){}
+            catch(Exception e){}
             Destroy(other.gameObject);
         }
     }
