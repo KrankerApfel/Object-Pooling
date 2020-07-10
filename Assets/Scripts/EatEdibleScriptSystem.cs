@@ -15,12 +15,12 @@ public class EatEdibleScriptSystem : MonoBehaviour
         if (!other.collider.CompareTag("Edible")) return;
         GetComponent<PacmanScore>().Score++;
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        try
+        SpeedPowerUp powerup = GetComponent<SpeedPowerUp>();
+        if (powerup != null)
         {
-            GetComponent<NavMeshAgent>().speed +=  other.gameObject.GetComponent<SpeedPowerUp>().speedBonus;
+            agent.speed += powerup.speedBonus;
         }
-        catch(Exception e){}
-        Destroy(other.gameObject);
 
+        Destroy(other.gameObject);
     }
 }
