@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EatEdibleScript : MonoBehaviour
 {
+    
     private void Awake()
     {
         TAccessor<EatEdibleScript>.Instance.AddItem(this);
@@ -18,6 +19,7 @@ public class EatEdibleScript : MonoBehaviour
     {
         if (other.collider.CompareTag("Edible"))
         {
+            GetComponent<PacmanScore>().Score++;
             Destroy(other.gameObject);
         }
     }

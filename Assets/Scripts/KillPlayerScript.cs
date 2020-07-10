@@ -18,12 +18,10 @@ public class KillPlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (_ghostScore == null)
-        {
-            _ghostScore = TAccessor<GhostScore>.Instance;
-        }
+      
         if (other.collider.CompareTag("Pacman"))
         {
+            GetComponent<GhostScore>().Score+=10;
             Destroy(other.gameObject);
         }
 

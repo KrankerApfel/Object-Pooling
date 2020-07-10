@@ -1,18 +1,32 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
+using TMPro;
 using UnityEngine;
 
 public class PacmanScore : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+      private int score = 0;
+      public TextMeshProUGUI text;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+      public int Score
+      {
+            get => score;
+            set
+            { 
+                  score = value;
+                  text.text = gameObject.name+ " : " + score.ToString();
+            }
+      }
+
+      private void Awake()
+      {
+            TAccessor<PacmanScore>.Instance.AddItem(this);
+            Score = 0;
+      }
+    
+      private void OnDestroy()
+      {
+            TAccessor<PacmanScore>.Instance.RemoveItem(this);
+      }
+
+   
 }
