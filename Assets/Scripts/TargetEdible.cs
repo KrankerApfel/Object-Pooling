@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class TargetEdible : MonoBehaviour
 {
     private List<EdibleList> _edibles;
+    private List<GhostList> _ghosts;
     public NavMeshAgent navMeshAgent;
     private void Awake()
     {
@@ -16,7 +17,51 @@ public class TargetEdible : MonoBehaviour
     {
         TAccessor<TargetEdible>.Instance.RemoveItem(this);
     }
+
+    public float GetDistanceToClosestGhost()
+    {
+
+        GhostList bestTarget = null;
+        float bestDistance = float.PositiveInfinity;
+        if (_ghosts == null)
+        {
+            _ghosts = TAccessor<GhostList>.Instance.GetAllModules();
+        }
+
+        foreach (var ghost in _ghosts)
+        {
+            float distance = Vector3.Distance(this.gameObject.transform.position, ghost.transform.position);
+            if (distance < bestDistance)
+            {
+                bestDistance = distance;
+                bestTarget = ghost;
+            }
+        }
+
+        return bestDistance;
+    }
     
+    public GhostList GuessBestGhostToFlee()
+    {
+        GhostList bestTarget = null;
+        float bestDistance = float.PositiveInfinity;
+        if (_ghosts == null)
+        {
+            _ghosts = TAccessor<GhostList>.Instance.GetAllModules();
+        }
+
+        foreach (var ghost in _ghosts)
+        {
+            float distance = Vector3.Distance(this.gameObject.transform.position, ghost.transform.position);
+            if (distance < bestDistance)
+            {
+                bestDistance = distance;
+                bestTarget = ghost;
+            }
+        }
+
+        return bestTarget;
+    }
     public EdibleList GuessTheBestEntityToTarget()
     {
         EdibleList bestTarget = null;
