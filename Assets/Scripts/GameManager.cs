@@ -8,17 +8,14 @@ using UnityEngine.Events;
 //gameobject that has the gamemanager
 public class GameManager : MonoBehaviour
 {
-    public Updater _updater;
     private FollowTargetUpdater _followTargetUpdater;
     private TargetEdibleUpdater _targetEdible;
-    public PacmanScoreUpdater _pacmanScoreUpdater;
-    public GameEndUpdater _gameEndUpdater;
+    private PacmanScoreUpdater _pacmanScoreUpdater;
+    private GameEndUpdater _gameEndUpdater;
 
     private void Awake()
     {
         Time.timeScale = 1f;
-        _updater = Updater.Instance;
-        _updater.InitAccessors();
         
         _followTargetUpdater = new FollowTargetUpdater();
         _followTargetUpdater.InitAccessors();
@@ -30,7 +27,6 @@ public class GameManager : MonoBehaviour
         _pacmanScoreUpdater = new PacmanScoreUpdater();
         _pacmanScoreUpdater.InitAccessors();
         
-        
         _gameEndUpdater = new GameEndUpdater();
         _gameEndUpdater.InitAccessors();
     }
@@ -38,7 +34,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       _updater.SystemUpdate(); 
        _followTargetUpdater.SystemUpdate();
        _targetEdible.SystemUpdate();
        _pacmanScoreUpdater.SystemUpdate();
