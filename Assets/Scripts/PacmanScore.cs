@@ -1,18 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class PacmanScore : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+      public int score = 0;
+      private void Awake()
+      {
+            TAccessor<PacmanScore>.Instance.AddItem(this);
+      }
+    
+      private void OnDestroy()
+      {
+            TAccessor<PacmanScore>.Instance.RemoveItem(this);
+      }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
