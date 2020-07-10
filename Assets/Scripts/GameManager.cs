@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Updater updater;
+    private Updater _updater;
 
 
     private void Awake()
     {
-        updater = Updater.Instance;
-        updater.InitAccessors();
+        _updater = Updater.Instance;
+        _updater.InitAccessors();
     }
 
     // Update is called once per frame
     void Update()
     {
-       updater.SystemUpdate(); 
+       _updater.SystemUpdate(); 
     }
 }

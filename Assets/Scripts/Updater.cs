@@ -18,7 +18,7 @@ public class Updater : IUpdater
     private TAccessor<TargetEdible> _targetEdible;
     //private float _timeLeft;
     private PacmanList _ghostTarget;
-
+    private bool _isEndGame;
     private EdibleList _pacmanTarget;
     // bool _isSearchingTarget;
     #region Singleton
@@ -71,21 +71,28 @@ public class Updater : IUpdater
             {
                 module.navMeshAgent.SetDestination(_pacmanTarget.transform.position);
             }
+            else
+            {
+                Debug.Log("hi");
+                Time.timeScale = 0f;
+                EndGame.instance.GameEnd(true);
+            }
         }
         
         //function so that all ghosts follow pacman 
         foreach (var module in _followTargets.GetAllModules()){
-
-            //if (_isSearchingTarget)
-            //{
-                //_isSearchingTarget = false;
             _ghostTarget = module.GuessTheBestEntityToTarget();
             if (_ghostTarget != null)
             {
                 module.navMeshAgent.SetDestination(_ghostTarget.transform.position);
             }
+            else
+            {
+                    Time.timeScale = 0f;
+                    EndGame.instance.GameEnd(false);
+            }
                 
-//            }
         }
+
     }
 }

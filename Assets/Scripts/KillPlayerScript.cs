@@ -21,5 +21,6 @@ public class KillPlayerScript : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+
     }
 }
