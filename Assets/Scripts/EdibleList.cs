@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GhostList : MonoBehaviour
+public class EdibleList : MonoBehaviour
 {
+
     private void Awake()
     {
-        TAccessor<GhostList>.Instance.AddItem(this);
+        TAccessor<EdibleList>.Instance.AddItem(this);
     }
 
     private void OnDestroy()
     {
-        TAccessor<GhostList>.Instance.RemoveItem(this);
+        TAccessor<EdibleList>.Instance.RemoveItem(this);
     }
+
 }

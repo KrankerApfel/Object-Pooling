@@ -7,7 +7,6 @@ public class PacmanList : MonoBehaviour
     private void Awake()
     {
         TAccessor<PacmanList>.Instance.AddItem(this);
-        Debug.Log(TAccessor<PacmanList>.Instance.GetAllModules().Count);
 
     }
 

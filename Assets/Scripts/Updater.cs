@@ -14,9 +14,13 @@ public class Updater : IUpdater
 {
     private TAccessor<Entities> _entities;
     private TAccessor<FollowTarget> _followTargets;
-    private float _timeLeft;
-    private PacmanList _target;
-    private bool _isSearchingTarget;
+
+    private TAccessor<TargetEdible> _targetEdible;
+    //private float _timeLeft;
+    private PacmanList _ghostTarget;
+
+    private EdibleList _pacmanTarget;
+    // bool _isSearchingTarget;
     #region Singleton
 
     private static Updater _instance;
@@ -42,60 +46,46 @@ public class Updater : IUpdater
     {
         _entities = TAccessor<Entities>.Instance;
         _followTargets = TAccessor<FollowTarget>.Instance;
+        _targetEdible = TAccessor<TargetEdible>.Instance;
         
     }
 
     public void SystemUpdate()
     {
-        _timeLeft -= Time.deltaTime;
+        /*_timeLeft -= Time.deltaTime;
         if (_target == null || _timeLeft <= 0)
         {
             _isSearchingTarget = true;
             _timeLeft = 1f;
-        }
-        //make a method in accessor to fill it in
-        //modules are monobehaviors that you can fill in data with 
+        }*/
         foreach (var module in _entities.GetAllModules())
         {
             GameObject entity = module.obj.gameObject;
             //GameObject entity = module.Value.Gameobject; 
         }
+
+        foreach (var module in _targetEdible.GetAllModules())
+        {
+            _pacmanTarget = module.GuessTheBestEntityToTarget();
+            if (_pacmanTarget != null)
+            {
+                module.navMeshAgent.SetDestination(_pacmanTarget.transform.position);
+            }
+        }
         
         //function so that all ghosts follow pacman 
         foreach (var module in _followTargets.GetAllModules()){
 
-            if (_isSearchingTarget)
+            //if (_isSearchingTarget)
+            //{
+                //_isSearchingTarget = false;
+            _ghostTarget = module.GuessTheBestEntityToTarget();
+            if (_ghostTarget != null)
             {
-                _isSearchingTarget = false;
-                _target = module.GuessTheBestEntityToTarget();
-                if (_target == null)
-                {
-                    Debug.Log("is null");
-                }
+                module.navMeshAgent.SetDestination(_ghostTarget.transform.position);
             }
-
-            module.navMeshAgent.SetDestination(_target.transform.position);
-
-
-            //setDestination
-            //isStopped 
+                
+//            }
         }
     }
 }
-
-/*
-Public class MyUpdater : IUpdater
-{
-    Public void SystemUpdate()
-    {
-        TAccessor<MyModule> myModuleAccessor = TAccessor<MyModule>.Instance();
-        TAccessor<MyOhterModule> myOtherModuleAccessor = TAccessor<MyOhterModule>.Instance();
-        Foreach(var module in myModuleAccessor.GetAllModules())
-        {
-            GameObject myEntity = module.Value.GameObject;
-            MyOtherModule otherModule = myModuleAccessor.TryGetModule(myEntity);
-            If(otherModule != null)
-            DoSomething();
-        }
-    }
-}*/

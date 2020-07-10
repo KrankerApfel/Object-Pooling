@@ -6,7 +6,6 @@ using UnityEngine.AI;
 
 public class FollowTarget : MonoBehaviour
 {
-    public Transform playerPosition;
     public NavMeshAgent navMeshAgent;
     private List<PacmanList> _pacmans;
     private void Awake()
@@ -28,11 +27,9 @@ public class FollowTarget : MonoBehaviour
         {
             _pacmans = TAccessor<PacmanList>.Instance.GetAllModules();
         }
-        Debug.Log("pacman count is : " + _pacmans.Count);
         foreach (var pacman in _pacmans)
         {
             //Debug.Log("position :" + pacman.transform.position);
-
             float distance = Vector3.Distance(this.gameObject.transform.position, pacman.transform.position);
             if (distance < bestDistance)
             {
@@ -41,6 +38,7 @@ public class FollowTarget : MonoBehaviour
             }
 
         }
+
         return bestTarget;
     }
 
