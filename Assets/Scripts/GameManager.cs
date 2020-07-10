@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 {
     public Updater _updater;
     public FollowTargetUpdater _FollowTargetUpdater;
+    public GhostScoreUpdater _GhostScoreUpdater;
 
     private void Awake()
     {
@@ -20,6 +21,10 @@ public class GameManager : MonoBehaviour
         _FollowTargetUpdater = new FollowTargetUpdater();
         _FollowTargetUpdater.InitAccessors();
 
+        
+        _GhostScoreUpdater = new GhostScoreUpdater();
+        _GhostScoreUpdater.InitAccessors();
+
     }
 
     // Update is called once per frame
@@ -27,5 +32,6 @@ public class GameManager : MonoBehaviour
     {
        _updater.SystemUpdate(); 
        _FollowTargetUpdater.SystemUpdate();
+       _GhostScoreUpdater.SystemUpdate();
     }
 }
